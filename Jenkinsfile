@@ -12,13 +12,15 @@ pipeline {
                 checkout scm
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                // Windows-la sonar-scanner run panna 'bat' thaan use pannanum
-                // -D parameters moolama project details-ai direct-ah anupalam
-                bat "sonar-scanner -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000"
-            }
+       stage('SonarQube Analysis') {
+    steps {
+        script {
+            def scannerHome = tool 'sonar-scanner'
+            // Inga YOUR_TOKEN-ku bathila neenga generate panna token-ai paste pannunga
+            bat "${scannerHome}\\bin\\sonar-scanner -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=YOUR_TOKEN"
         }
+    }
+}
         stage('Build Docker Image') {
             steps {
                 // Docker image build panna bat command
