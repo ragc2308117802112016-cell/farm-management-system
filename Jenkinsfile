@@ -16,8 +16,8 @@ pipeline {
     steps {
         script {
             def scannerHome = tool 'sonar-scanner'
-            // bin kulla windows-x86-64 folder-ku poyi .bat file-ai call pannanum
-            bat "${scannerHome}\\bin\\windows-x86-64\\sonar-scanner.bat -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_03de2a1d7239df809dd828971d69b8cefde80fdb"
+            // Puthu scanner path
+            bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_03de2a1d7239df809dd828971d69b8cefde80fdb"
         }
     }
 }
