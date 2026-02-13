@@ -17,7 +17,7 @@ pipeline {
         script {
             def scannerHome = tool 'sonar-scanner'
             // Inga YOUR_TOKEN-ku bathila neenga generate panna token-ai paste pannunga
-            bat "${scannerHome}\\bin\\sonar-scanner -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=YOUR_TOKEN"
+            bat "${scannerHome}\\bin\\sonar-scanner -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_03de2a1d7239df809dd828971d69b8cefde80fdb"
         }
     }
 }
