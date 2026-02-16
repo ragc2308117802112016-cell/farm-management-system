@@ -27,13 +27,16 @@ pipeline {
                 bat "docker build --no-cache -t ${DOCKER_IMAGE} ."
             }
         }
-        stage('Deploy to Minikube') {
-            steps {
-                // Kubernetes (Minikube)-la deploy panna kubectl use panrom
+       stage('Deploy to Minikube') {
+    steps {
+        script {
+            // Kubeconfig path-ai point panni deploy pannuvom
+            withEnv(["KUBECONFIG=C:\\Users\\acer\\.kube\\config"]) {
                 bat "kubectl apply -f deployment.yaml"
             }
         }
     }
+}
     post {
         always {
             echo 'Build Process Finished!'
