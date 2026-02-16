@@ -16,7 +16,7 @@ pipeline {
     steps {
         script {
             def scannerHome = tool 'sonar-scanner'
-            // Puthu scanner path
+            // Variable use pannum pothu, path dynamic-ah maaridum
             bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=farm-management-project -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_03de2a1d7239df809dd828971d69b8cefde80fdb"
         }
     }
@@ -24,7 +24,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Docker image build panna bat command
-                bat "docker build -t ${DOCKER_IMAGE} ."
+                bat "docker build --no-cache -t ${DOCKER_IMAGE} ."
             }
         }
         stage('Deploy to Minikube') {
