@@ -11,10 +11,15 @@ spec:
     metadata:
       labels:
         app: farm-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3000"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: farm-container
         image: farm-app:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
 ---
